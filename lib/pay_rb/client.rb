@@ -60,10 +60,10 @@ module PayRb
 
     attr_reader :username, :password, :environment, :bank, :base_url
 
-    ALLOWED_ENVIRONMENTS = %i[uat].freeze
+    ALLOWED_ENVIRONMENTS = BASE_URLS.values.flat_map(&:keys).uniq.freeze
     private_constant :ALLOWED_ENVIRONMENTS
 
-    ALLOWED_BANKS = %i[dsk].freeze
+    ALLOWED_BANKS = BASE_URLS.keys.freeze
     private_constant :ALLOWED_BANKS
 
     def validate_environment
